@@ -6,24 +6,12 @@ import BaseButtonIcon from "./BaseButtonIcon.vue";
 import fetchClient from "@/services/fetch-api";
 
 const props = defineProps({
-  breeds: {
-    type: Array,
-    default: [],
-  },
-  zipCodes: {
-    type: Array,
-    default: [],
-  },
-  ageMin: {
-    type: Number,
-    default: 0,
-  },
-  ageMax: {
-    type: Number,
-    default: 25,
-  },
+  breeds: { type: Array, default: [] },
+  zipCodes: { type: Array, default: [] },
+  ageMin: { type: Number, default: 0 },
+  ageMax: { type: Number, default: 25 },
 });
-const emit = defineEmits(["add", "remove"]);
+const emit = defineEmits(["updateSelectedDogIds"]);
 
 // Initialize lists
 const dogIDs = ref([]);
@@ -64,6 +52,19 @@ async function retrieveDogs() {
     nextUrl.value = response.data.next;
   }
 }
+
+// Add / Remove selected Dogs
+const selectedDogIDs = ref([]);
+function addRemoveDogID(id) {
+  const index = selectedDogIDs.value.indexOf(id);
+  if (index !== -1) selectedDogIDs.value.splice(index, 1);
+  else selectedDogIDs.value.push(id);
+}
+
+// Update Selected Dogs
+watch(selectedDogIDs.value, () => {
+  emit("updateSelectedDogIds", selectedDogIDs.value);
+});
 </script>
 
 <template>
@@ -96,8 +97,8 @@ async function retrieveDogs() {
             :age="dog.age"
             :zip-code="dog.zip_code"
             :breed="dog.breed"
-            @add="$emit('add', $event)"
-            @remove="$emit('remove', $event)"
+            :selected="selectedDogIDs.indexOf(dog.id) >= 0"
+            @click="addRemoveDogID(dog.id)"
           />
         </template>
       </BaseScroller>

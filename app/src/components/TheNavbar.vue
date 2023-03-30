@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from "vue-router";
-import fetchClient from "@/services/fetch-api";
 import BaseButtonIcon from "@/components/BaseButtonIcon.vue";
+import fetchClient from "@/services/fetch-api";
 
 const emit = defineEmits(["openModal"]);
 

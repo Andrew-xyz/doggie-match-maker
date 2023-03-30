@@ -2,14 +2,8 @@
 import BaseButtonIcon from "./BaseButtonIcon.vue";
 
 const props = defineProps({
-  filterType: {
-    type: String,
-    default: "breed",
-  },
-  filterDescription: {
-    type: String,
-    default: "Mutt",
-  },
+  filterType: { type: String, default: "breed" },
+  filterDescription: { type: String, default: "Mutt" },
 });
 const emit = defineEmits(["remove"]);
 </script>

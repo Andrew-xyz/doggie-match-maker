@@ -1,13 +1,7 @@
 <script setup>
 const props = defineProps({
-  name: {
-    type: String,
-    default: "close",
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
+  name: { type: String, default: "close" },
+  disabled: { type: Boolean, default: false },
 });
 
 const icons = {

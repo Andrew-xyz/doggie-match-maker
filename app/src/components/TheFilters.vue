@@ -22,12 +22,10 @@ onMounted(async () => {
 
 // Add / Remove Breed Filters
 const breedFilters = ref([]);
-function addBreedFilter(breed) {
-  if (!breedFilters.value.includes(breed)) breedFilters.value.push(breed);
-}
-function removeBreedFilter(breed) {
+function addRemoveBreedFilter(breed) {
   const index = breedFilters.value.indexOf(breed);
   if (index !== -1) breedFilters.value.splice(index, 1);
+  else breedFilters.value.push(breed);
 }
 
 // Update Breed Filters
@@ -47,7 +45,7 @@ watch(breedFilters.value, () => {
         <BaseSearchBox
           :selections="breedList"
           placeholder="Filter by Breed"
-          @item-selected="addBreedFilter"
+          @item-selected="addRemoveBreedFilter"
         />
       </header>
 
@@ -56,7 +54,7 @@ watch(breedFilters.value, () => {
           v-for="breed in breedFilters"
           filter-type="breed"
           :filter-description="breed"
-          @remove="removeBreedFilter(breed)"
+          @remove="addRemoveBreedFilter(breed)"
         />
       </main>
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import TheNavbar from "@/components/TheNavbar.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import TheFilters from "@/components/TheFilters.vue";
@@ -13,22 +13,9 @@ const ageMinFilter = ref(0);
 const ageMaxFilter = ref(25);
 
 // Selected Dogs
-const selectedDogs = ref([]);
-function addDog(dog) {
-  if (!selectedDogs.value.includes(dog)) selectedDogs.value.push(dog);
-}
-function removeDog(dog) {
-  const index = selectedDogs.value.indexOf(dog);
-  if (index !== -1) selectedDogs.value.splice(index, 1);
-}
+const selectedDogIDs = ref([]);
 
-const selectedDogIDs = computed(() => {
-  const dogIDs = [];
-  selectedDogs.value.forEach((dog) => {
-    if (dog.id) dogIDs.push(dog.id);
-  });
-  return dogIDs;
-});
+// Match Finder
 async function findMatch() {
   const response = await fetchClient.post("/dogs/match", selectedDogIDs.value);
   console.log(response.data);
@@ -54,8 +41,7 @@ async function findMatch() {
             :zip-codes="zipCodeFilters"
             :age-min="ageMinFilter"
             :age-max="ageMaxFilter"
-            @add="addDog"
-            @remove="removeDog"
+            @update-selected-dog-ids="selectedDogIDs = $event"
           />
           <TheFilters
             @update-breed-filters="breedFilters = $event"

@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from "vue";
-
 const props = defineProps({
   id: { type: String },
   img: { type: String },
@@ -8,15 +6,8 @@ const props = defineProps({
   age: { type: Number },
   zipCode: { type: Number },
   breed: { type: String },
+  selected: { type: Boolean, default: false },
 });
-const emit = defineEmits(["add", "remove"]);
-
-// Select / de-select an entry
-const selected = ref(false);
-function selectDog() {
-  selected.value = !selected.value;
-  selected.value ? emit("add", props) : emit("remove", props);
-}
 </script>
 
 <template>
@@ -25,7 +16,6 @@ function selectDog() {
       selected ? 'bg-gray-100 border-l-purple-900' : 'bg-white border-l-white',
       'flex flex-row w-full h-18 items-center p-2 hover:bg-gray-100 rounded-l cursor-pointer border-l-4 border-b border-b-gray-300 hover:-translate-y-1 transition-all duration-300',
     ]"
-    @click="selectDog"
   >
     <div class="flex items-center w-1/6 h-16 pl-4 rounded-full">
       <div class="flex items-center justify-center w-fit h-fit relative">

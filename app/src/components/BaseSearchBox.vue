@@ -11,14 +11,8 @@ import {
 import BaseButtonIcon from "./BaseButtonIcon.vue";
 
 const props = defineProps({
-  selections: {
-    type: Array,
-    default: [],
-  },
-  placeholder: {
-    type: String,
-    default: "Filter",
-  },
+  selections: { type: Array, default: [] },
+  placeholder: { type: String, default: "Filter" },
 });
 const emit = defineEmits(["itemSelected"]);
 

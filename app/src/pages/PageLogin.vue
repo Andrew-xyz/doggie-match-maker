@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-
 import LoginFormDefault from "@/components/LoginFormDefault.vue";
 import LoginFormFailure from "@/components/LoginFormFailure.vue";
 import TransitionOutIn from "@/transitions/TransitionOutIn.vue";
