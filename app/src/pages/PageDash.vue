@@ -3,6 +3,7 @@ import { ref } from "vue";
 import TheNavbar from "@/components/TheNavbar.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import TheFilters from "@/components/TheFilters.vue";
+import ModalMatch from "../components/ModalMatch.vue";
 import DogList from "@/components/DogList.vue";
 import fetchClient from "@/services/fetch-api";
 
@@ -13,12 +14,24 @@ const ageMinFilter = ref(0);
 const ageMaxFilter = ref(15);
 
 // Selected Dogs
-const selectedDogIDs = ref([]);
+const selectedDogIds = ref([]);
 
 // Match Finder
+const matchId = ref("");
+const matchModalOpen = ref(false);
 async function findMatch() {
-  const response = await fetchClient.post("/dogs/match", selectedDogIDs.value);
-  console.log(response.data);
+  if (selectedDogIds.value.length) {
+    const response = await fetchClient.post(
+      "/dogs/match",
+      selectedDogIds.value
+    );
+    matchId.value = response.data.match;
+    matchModalOpen.value = true;
+  }
+}
+function clearMatch() {
+  matchModalOpen.value = false;
+  matchId.value = "";
 }
 </script>
 
@@ -27,7 +40,7 @@ async function findMatch() {
     <!-- Headers -->
     <header class="bg-purple-900 pb-24">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <TheNavbar @open-modal="" />
+        <TheNavbar @open-modal="modalOpen = true" />
       </div>
     </header>
     <!-- Main Panels -->
@@ -41,7 +54,7 @@ async function findMatch() {
             :zip-codes="zipCodeFilters"
             :age-min="ageMinFilter"
             :age-max="ageMaxFilter"
-            @update-selected-dog-ids="selectedDogIDs = $event"
+            @update-selected-dog-ids="selectedDogIds = $event"
           />
           <TheFilters
             @update-breed-filters="breedFilters = $event"
@@ -60,4 +73,11 @@ async function findMatch() {
       </div>
     </footer>
   </div>
+
+  <!-- Modals -->
+  <ModalMatch
+    :is-open="matchModalOpen"
+    :match-id="matchId"
+    @close="clearMatch"
+  />
 </template>

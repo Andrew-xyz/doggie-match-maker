@@ -15,7 +15,7 @@ const props = defineProps({
 const emit = defineEmits(["updateSelectedDogIds"]);
 
 // Initialize lists
-const dogIDs = ref([]);
+const dogIds = ref([]);
 const dogList = ref([]);
 const dogParams = reactive(props);
 
@@ -26,7 +26,7 @@ const dogSort = computed(() => {
   else return "breed:desc";
 });
 
-// Retrieve initial dog IDs on filter change
+// Retrieve initial dog Ids on filter change
 const nextUrl = ref("/dogs/search");
 watchEffect(async () => {
   // Reset current list
@@ -35,36 +35,40 @@ watchEffect(async () => {
   const response = await fetchClient.get("/dogs/search", {
     params: { ...dogParams, sort: dogSort.value },
   });
-  dogIDs.value = response.data.resultIds;
+  dogIds.value = response.data.resultIds;
   nextUrl.value = response.data.next;
 });
 
-// Retrieve dog list upon receipt of additional IDs
-watch(dogIDs, async () => {
-  const response = await fetchClient.post("/dogs", dogIDs.value);
+// Retrieve dog list upon receipt of additional Ids
+watch(dogIds, async () => {
+  const response = await fetchClient.post("/dogs", dogIds.value);
   dogList.value = dogList.value.concat(response.data);
 });
 
-// Retrieve additional dog IDs
+// Retrieve additional dog Ids
 async function retrieveDogs() {
   if (nextUrl.value && dogList.value.length > 0) {
     const response = await fetchClient.get(nextUrl.value);
-    dogIDs.value = response.data.resultIds;
+    dogIds.value = response.data.resultIds;
     nextUrl.value = response.data.next;
   }
 }
 
-// Add / Remove selected Dogs
-const selectedDogIDs = ref([]);
-function addRemoveDogID(id) {
-  const index = selectedDogIDs.value.indexOf(id);
-  if (index !== -1) selectedDogIDs.value.splice(index, 1);
-  else selectedDogIDs.value.push(id);
+// Add / Remove / Clear selected Dogs
+const selectedDogIds = ref([]);
+function addRemoveDogId(id) {
+  const index = selectedDogIds.value.indexOf(id);
+  if (index !== -1) selectedDogIds.value.splice(index, 1);
+  else selectedDogIds.value.push(id);
+}
+function clearDogIds() {
+  selectedDogIds.value = [];
+  emit("updateSelectedDogIds", selectedDogIds.value);
 }
 
 // Update Selected Dogs
-watch(selectedDogIDs.value, () => {
-  emit("updateSelectedDogIds", selectedDogIDs.value);
+watch(selectedDogIds.value, () => {
+  emit("updateSelectedDogIds", selectedDogIds.value);
 });
 </script>
 
@@ -82,7 +86,7 @@ watch(selectedDogIDs.value, () => {
           <BaseButtonText
             class="w-full h-8 bg-white/50 text-purple-900/75 hover:bg-white transition-all duration-300"
             text="Clear"
-            @click="selectedDogIDs = []"
+            @click="clearDogIds"
           />
         </div>
 
@@ -107,8 +111,8 @@ watch(selectedDogIDs.value, () => {
             :age="dog.age"
             :zip-code="dog.zip_code"
             :breed="dog.breed"
-            :selected="selectedDogIDs.indexOf(dog.id) >= 0"
-            @click="addRemoveDogID(dog.id)"
+            :selected="selectedDogIds.indexOf(dog.id) >= 0"
+            @click="addRemoveDogId(dog.id)"
           />
         </template>
       </BaseScroller>
