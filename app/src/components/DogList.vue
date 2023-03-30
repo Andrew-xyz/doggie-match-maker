@@ -77,7 +77,6 @@ async function retrieveDogs() {
         class="flex flex-row items-center w-full h-16 py-2 pr-2 pl-[12px] bg-purple-900/75 text-white font-bold"
       >
         <div class="w-1/6"></div>
-        <div class="flex w-1/12 justify-center">Age</div>
         <div class="flex flex-row items-center pl-8 w-7/12">
           <BaseButtonIcon
             :name="sortAscending ? 'filterdown' : 'filterup'"
@@ -86,7 +85,7 @@ async function retrieveDogs() {
           />
           <div>Breed</div>
         </div>
-        <div class="flex w-1/6 justify-center">Zip Code</div>
+        <div class="flex w-3/12 justify-center">Zip Code</div>
       </header>
       <BaseScroller class="w-full grow h-12" @bottom="retrieveDogs">
         <template v-for="dog in dogList">
