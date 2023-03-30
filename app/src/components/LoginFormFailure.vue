@@ -8,13 +8,12 @@ const emit = defineEmits(["loginReset"]);
       <div class="m-auto">Invalid credentials. Please try again.</div>
     </div>
 
-    <div class="mt-8 flex justify-center text-base text-black">
-      <button
+    <div class="mt-8 flex justify-center">
+      <BaseButtonText
+        class="w-32 h-10 rounded-xl bg-yellow-400 bg-opacity-50 text-white shadow-xl backdrop-blur-md hover:bg-yellow-600"
+        text="Login"
         @click="$emit('loginReset')"
-        class="rounded-3xl bg-yellow-400 bg-opacity-50 px-10 py-2 text-white shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-yellow-600"
-      >
-        Retry
-      </button>
+      />
     </div>
   </div>
 </template>

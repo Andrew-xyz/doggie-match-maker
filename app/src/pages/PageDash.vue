@@ -10,7 +10,7 @@ import fetchClient from "@/services/fetch-api";
 const breedFilters = ref([]);
 const zipCodeFilters = ref([]);
 const ageMinFilter = ref(0);
-const ageMaxFilter = ref(25);
+const ageMaxFilter = ref(15);
 
 // Selected Dogs
 const selectedDogIDs = ref([]);
@@ -46,8 +46,8 @@ async function findMatch() {
           <TheFilters
             @update-breed-filters="breedFilters = $event"
             @update-zip-code-filters="zipCodeFilters = $event"
-            @update-age-max-filter="ageMinFilter = $event"
-            @update-age-min-filter="ageMaxFilter = $event"
+            @update-age-min-filter="ageMinFilter = $event"
+            @update-age-max-filter="ageMaxFilter = $event"
             @find-match="findMatch"
           />
         </div>

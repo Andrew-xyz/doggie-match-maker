@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, onMounted } from "vue";
-import FilterListItem from "./FilterListItem.vue";
+import FilterItem from "./FilterItem.vue";
+import FilterSelections from "./FilterSelections.vue";
 import BaseSearchBox from "./BaseSearchBox.vue";
 import BaseButtonText from "./BaseButtonText.vue";
 import fetchClient from "@/services/fetch-api";
@@ -27,10 +28,21 @@ function addRemoveBreedFilter(breed) {
   if (index !== -1) breedFilters.value.splice(index, 1);
   else breedFilters.value.push(breed);
 }
-
 // Update Breed Filters
 watch(breedFilters.value, () => {
   emit("updateBreedFilters", breedFilters.value);
+});
+
+// Add / Remove Zip Code Filters
+const zipCodeFilters = ref([]);
+function addRemoveZipCode(zipCode) {
+  const index = zipCodeFilters.value.indexOf(zipCode);
+  if (index !== -1) zipCodeFilters.value.splice(index, 1);
+  else zipCodeFilters.value.push(zipCode);
+}
+// Update Zip Code Filters
+watch(zipCodeFilters.value, () => {
+  emit("updateZipCodeFilters", zipCodeFilters.value);
 });
 </script>
 
@@ -50,12 +62,27 @@ watch(breedFilters.value, () => {
       </header>
 
       <main class="flex flex-col w-full grow overflow-y-auto h-12">
-        <FilterListItem
-          v-for="breed in breedFilters"
-          filter-type="breed"
-          :filter-description="breed"
-          @remove="addRemoveBreedFilter(breed)"
+        <FilterSelections
+          @update-age-min="$emit('updateAgeMinFilter', $event)"
+          @update-age-max="$emit('updateAgeMaxFilter', $event)"
+          @add-zip-code="addRemoveZipCode"
         />
+        <div class="flex w-full grow h-12 px-4 overflow-y-auto">
+          <div class="flex flex-row w-full h-fit flex-wrap">
+            <FilterItem
+              v-for="breed in breedFilters"
+              filter-type="breed"
+              :filter-description="breed"
+              @click="addRemoveBreedFilter(breed)"
+            />
+            <FilterItem
+              v-for="zipCode in zipCodeFilters"
+              filter-type="zipcode"
+              :filter-description="zipCode"
+              @click="addRemoveZipCode(zipCode)"
+            />
+          </div>
+        </div>
       </main>
 
       <footer class="flex items-center w-full h-fit p-4">

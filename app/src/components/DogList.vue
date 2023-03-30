@@ -10,7 +10,7 @@ const props = defineProps({
   breeds: { type: Array, default: [] },
   zipCodes: { type: Array, default: [] },
   ageMin: { type: Number, default: 0 },
-  ageMax: { type: Number, default: 25 },
+  ageMax: { type: Number, default: 15 },
 });
 const emit = defineEmits(["updateSelectedDogIds"]);
 
