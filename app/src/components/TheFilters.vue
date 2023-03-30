@@ -60,7 +60,7 @@ watch(breedFilters.value, () => {
 
       <footer class="flex items-center w-full h-fit p-4">
         <BaseButtonText
-          class="w-full bg-purple-900/75 hover:bg-purple-900/50 hover:scale-105 text-white font-bold"
+          class="w-full h-10 bg-purple-900/75 hover:bg-purple-900/50 hover:scale-105 text-white font-bold"
           text="Find my match!"
           @click="$emit('findMatch')"
         />

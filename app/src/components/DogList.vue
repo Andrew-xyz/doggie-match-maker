@@ -3,6 +3,7 @@ import { ref, reactive, watchEffect, watch, computed } from "vue";
 import DogListItem from "./DogListItem.vue";
 import BaseScroller from "./BaseScroller.vue";
 import BaseButtonIcon from "./BaseButtonIcon.vue";
+import BaseButtonText from "./BaseButtonText.vue";
 import fetchClient from "@/services/fetch-api";
 
 const props = defineProps({
@@ -77,12 +78,21 @@ watch(selectedDogIDs.value, () => {
       <header
         class="flex flex-row items-center w-full h-16 py-2 pr-2 pl-[12px] bg-purple-900/75 text-white font-bold"
       >
-        <div class="w-1/6"></div>
-        <div class="flex flex-row items-center pl-8 w-7/12">
+        <div class="w-1/6">
+          <BaseButtonText
+            class="w-full h-8 bg-white/50 text-purple-900/75 hover:bg-white transition-all duration-300"
+            text="Clear"
+            @click="selectedDogIDs = []"
+          />
+        </div>
+
+        <div
+          class="flex flex-row items-center pl-8 w-7/12 cursor-pointer"
+          @click="sortAscending = !sortAscending"
+        >
           <BaseButtonIcon
             :name="sortAscending ? 'filterdown' : 'filterup'"
             class="w-8 h-8 pt-1"
-            @click="sortAscending = !sortAscending"
           />
           <div>Breed</div>
         </div>

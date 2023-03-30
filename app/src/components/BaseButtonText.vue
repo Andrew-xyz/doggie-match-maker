@@ -7,7 +7,7 @@ const props = defineProps({
 <template>
   <button
     type="submit"
-    class="rounded-lg px-10 py-2 shadow-xl transition-all duration-300"
+    class="rounded-lg px-2 shadow-xl transition-all duration-300"
   >
     {{ text }}
   </button>
