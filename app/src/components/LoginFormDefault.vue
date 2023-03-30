@@ -27,7 +27,7 @@ async function login() {
     <div class="flex flex-col w-fit h-fit">
       <div class="mb-4 text-base">
         <input
-          class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md hover:ring-2 focus:ring-2 ring-purple-900 ring-inset"
+          class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md hover:ring-2 focus:ring-2 !ring-purple-900 !ring-inset placeholder-opacity-50 focus:placeholder-opacity-25"
           type="text"
           placeholder="username"
           v-model="name"
@@ -36,8 +36,8 @@ async function login() {
 
       <div class="mb-4 text-base">
         <input
-          class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md hover:ring-2 focus:ring-2 ring-purple-900 ring-inset"
-          type="text"
+          class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md hover:ring-2 focus:ring-2 !ring-purple-900 !ring-inset placeholder-opacity-50 focus:placeholder-opacity-25"
+          type="email"
           placeholder="your-email@fetch.com"
           v-model="email"
         />
