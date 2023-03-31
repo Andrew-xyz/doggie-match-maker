@@ -15,4 +15,6 @@ services:
 
   doggie-dashboard:
     container_name: doggie-dashboard
-    image: andrewxyz/doggie-match-maker
+    build:
+      context: .
+      dockerfile: Dockerfile
