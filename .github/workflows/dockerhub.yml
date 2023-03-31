@@ -44,6 +44,8 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
+          build-args: |
+            "VITE_FETCH_API_KEY={{ secrets.FETCH_API_KEY }}"
           file: ./Dockerfile
           platforms: linux/arm64,linux/amd64
           push: true
