@@ -29,8 +29,8 @@ async function findMatch() {
       selectedDogIds.value
     );
     matchId.value = response.data.match;
-    matchModalOpen.value = true;
   }
+  matchModalOpen.value = true;
 }
 function clearMatch() {
   matchModalOpen.value = false;

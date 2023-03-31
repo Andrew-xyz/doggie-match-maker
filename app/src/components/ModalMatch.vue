@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive, watchEffect } from "vue";
 import BaseModal from "./BaseModal.vue";
+import BaseButtonText from "./BaseButtonText.vue";
 import fetchClient from "@/services/fetch-api";
 
 const props = defineProps({
@@ -23,7 +24,7 @@ watchEffect(async () => {
 
 <template>
   <BaseModal class="w-full max-w-lg" :open="isOpen" @close="$emit('close')">
-    <div class="flex flex-col w-full h-fit space-y-4">
+    <div v-if="matchId" class="flex flex-col w-full h-fit space-y-4">
       <div
         class="flex flex-col w-full items-center justify-center bg-purple-900/75 py-3"
       >
@@ -54,6 +55,26 @@ watchEffect(async () => {
           </div>
         </div>
       </div>
+    </div>
+    <div v-else class="flex flex-col w-full h-fit justify-center items-center">
+      <div
+        class="flex flex-col w-full items-center justify-center bg-purple-900/75 py-3 space-y-4"
+      >
+        <div
+          class="w-full text-center text-2xl sm:text-3xl text-white font-bold"
+        >
+          No Matches Found...!
+        </div>
+      </div>
+      <div class="text-xl text-gray-500 text-center p-4">
+        But don't worry, there's plenty of dogs left in the park! Select some
+        candidates from the list to get started!
+      </div>
+      <BaseButtonText
+        text="Got it!"
+        class="w-44 h-10 bg-purple-900/75 hover:bg-purple-900/50 mb-4 text-white font-bold"
+        @click="$emit('close')"
+      />
     </div>
   </BaseModal>
 </template>

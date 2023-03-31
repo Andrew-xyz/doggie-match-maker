@@ -39,6 +39,6 @@ defineProps({
       </div>
       <div class="text-gray-500">{{ breed }}</div>
     </div>
-    <div class="flex w-3/12 justify-center">{{ zipCode }}</div>
+    <div class="flex w-3/12 justify-center text-gray-500">{{ zipCode }}</div>
   </div>
 </template>

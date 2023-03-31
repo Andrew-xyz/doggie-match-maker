@@ -31,7 +31,7 @@ function addZipCode() {
             type="number"
             name="min"
             min="0"
-            max="15"
+            :max="ageMax"
             class="w-full rounded-md border border-gray-300 bg-white pl-6 text-base font-medium text-gray-500 text-center outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900 focus:shadow-md"
           />
         </div>
@@ -42,7 +42,7 @@ function addZipCode() {
             @change.lazy="$emit('updateAgeMax', ageMax)"
             type="number"
             name="max"
-            min="0"
+            :min="ageMin"
             max="15"
             class="w-full rounded-md border border-gray-300 bg-white pl-6 text-base font-medium text-gray-500 text-center outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900 focus:shadow-md"
           />
@@ -61,11 +61,8 @@ function addZipCode() {
         <div class="flex flex-row items-center">
           <input
             v-model="zipCode"
-            type="number"
             name="zipcode"
-            min="10000"
-            max="99999"
-            class="w-full rounded-md border border-gray-300 bg-white pl-6 text-base font-medium text-gray-500 text-center outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900 focus:shadow-md"
+            class="w-full h-10 rounded-md border border-gray-300 bg-white text-base font-medium text-gray-500 text-center outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900 focus:shadow-md"
           />
         </div>
         <BaseButtonText
