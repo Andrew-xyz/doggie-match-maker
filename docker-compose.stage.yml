@@ -17,4 +17,4 @@ services:
     container_name: doggie-dashboard
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.stage

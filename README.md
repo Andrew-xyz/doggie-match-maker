@@ -23,7 +23,7 @@ The dev environment is fitted with HMR via host volume mapping using Vite and Po
 
 The staging environment provides a full build of the `/dist` folder and can be used to simulate production deployments. This does not provide HMR. This environment can be run using the following command:
 
-`docker compose -f docker-compose.staging.yml up --build`
+`docker compose -f docker-compose.stage.yml up --build`
 
 ### Prod
 
