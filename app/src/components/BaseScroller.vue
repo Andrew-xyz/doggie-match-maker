@@ -25,7 +25,7 @@ watch(bottom, () => {
 </script>
 
 <template>
-  <main class="overflow-y-auto" ref="el">
+  <div class="overflow-y-auto" ref="el">
     <slot />
-  </main>
+  </div>
 </template>

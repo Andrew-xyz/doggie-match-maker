@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   id: { type: String },
   img: { type: String },
   name: { type: String },
@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <main
+  <div
     :class="[
       selected ? 'bg-gray-100 border-l-purple-900' : 'bg-white border-l-white',
       'flex flex-row w-full h-18 items-center p-2 hover:bg-gray-100 rounded-l cursor-pointer border-l-4 border-b border-b-gray-300 hover:-translate-y-1 transition-all duration-300',
@@ -40,5 +40,5 @@ const props = defineProps({
       <div class="text-gray-500">{{ breed }}</div>
     </div>
     <div class="flex w-3/12 justify-center">{{ zipCode }}</div>
-  </main>
+  </div>
 </template>

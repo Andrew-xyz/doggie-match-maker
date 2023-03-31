@@ -6,10 +6,10 @@ import {
   DialogPanel,
 } from "@headlessui/vue";
 
-const props = defineProps({
+defineProps({
   open: { type: Boolean, default: false },
 });
-const emit = defineEmits(["close"]);
+defineEmits(["close"]);
 </script>
 
 <template>

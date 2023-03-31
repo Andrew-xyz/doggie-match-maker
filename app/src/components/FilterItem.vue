@@ -1,7 +1,7 @@
 <script setup>
 import BaseButtonIcon from "./BaseButtonIcon.vue";
 
-const props = defineProps({
+defineProps({
   filterType: { type: String, default: "breed" },
   filterDescription: { default: "Mutt" },
 });

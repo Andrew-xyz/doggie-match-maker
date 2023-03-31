@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   name: { type: String, default: "close" },
   disabled: { type: Boolean, default: false },
 });

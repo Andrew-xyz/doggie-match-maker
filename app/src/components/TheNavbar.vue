@@ -3,7 +3,7 @@ import { useRouter } from "vue-router";
 import BaseButtonIcon from "@/components/BaseButtonIcon.vue";
 import fetchClient from "@/services/fetch-api";
 
-const emit = defineEmits(["openModal"]);
+defineEmits(["openModal"]);
 
 // Log out and return to splash screen
 const router = useRouter();

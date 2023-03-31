@@ -1,5 +1,5 @@
 <script setup>
-const emit = defineEmits(["loginReset"]);
+defineEmits(["loginReset"]);
 </script>
 
 <template>

@@ -38,7 +38,7 @@ const zipCodeFilters = ref([]);
 function addRemoveZipCode(zipCode) {
   const index = zipCodeFilters.value.indexOf(zipCode);
   if (index !== -1) zipCodeFilters.value.splice(index, 1);
-  else zipCodeFilters.value.push(zipCode);
+  else if (zipCode) zipCodeFilters.value.push(zipCode);
 }
 // Update Zip Code Filters
 watch(zipCodeFilters.value, () => {
@@ -51,17 +51,15 @@ watch(zipCodeFilters.value, () => {
     <div
       class="flex flex-col h-full overflow-hidden rounded-lg bg-white shadow"
     >
-      <header
-        class="flex flex-row items-center w-full h-16 p-4 bg-purple-900/75"
-      >
+      <div class="flex flex-row items-center w-full h-16 p-4 bg-purple-900/75">
         <BaseSearchBox
           :selections="breedList"
           placeholder="Filter by Breed"
           @item-selected="addRemoveBreedFilter"
         />
-      </header>
+      </div>
 
-      <main class="flex flex-col w-full grow overflow-y-auto h-12">
+      <div class="flex flex-col w-full grow overflow-y-auto h-12">
         <FilterSelections
           @update-age-min="$emit('updateAgeMinFilter', $event)"
           @update-age-max="$emit('updateAgeMaxFilter', $event)"
@@ -83,15 +81,15 @@ watch(zipCodeFilters.value, () => {
             />
           </div>
         </div>
-      </main>
+      </div>
 
-      <footer class="flex items-center w-full h-fit p-4">
+      <div class="flex items-center w-full h-fit p-4">
         <BaseButtonText
           class="w-full h-10 bg-purple-900/75 hover:bg-purple-900/50 hover:scale-105 text-white font-bold"
           text="Find my match!"
           @click="$emit('findMatch')"
         />
-      </footer>
+      </div>
     </div>
   </div>
 </template>

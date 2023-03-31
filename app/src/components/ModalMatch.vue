@@ -7,7 +7,7 @@ const props = defineProps({
   isOpen: { type: Boolean, default: false },
   matchId: { type: String, default: "" },
 });
-const emit = defineEmits(["close"]);
+defineEmits(["close"]);
 
 const matchParams = reactive(props);
 
@@ -24,15 +24,15 @@ watchEffect(async () => {
 <template>
   <BaseModal class="w-full max-w-lg" :open="isOpen" @close="$emit('close')">
     <div class="flex flex-col w-full h-fit space-y-4">
-      <header
+      <div
         class="flex flex-col w-full items-center justify-center bg-purple-900/75 py-3"
       >
         <div class="text-2xl sm:text-3xl text-white font-bold">
           CONGRATULATIONS!
         </div>
         <div class="text-xl text-white">It's a match!</div>
-      </header>
-      <main class="flex flex-row space-x-8 items-center p-4">
+      </div>
+      <div class="flex flex-row space-x-8 items-center p-4">
         <div class="w-fit h-full">
           <img
             class="w-44 h-auto aspect-square rounded-full"
@@ -53,7 +53,7 @@ watchEffect(async () => {
             {{ "From: " + dogMatch.zip_code }}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   </BaseModal>
 </template>
