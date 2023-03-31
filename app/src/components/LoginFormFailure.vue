@@ -1,5 +1,6 @@
 <script setup>
 import BaseButtonText from "./BaseButtonText.vue";
+
 defineEmits(["loginReset"]);
 </script>
 
