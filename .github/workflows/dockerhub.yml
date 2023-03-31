@@ -38,15 +38,19 @@ jobs:
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
+      # Create the environment file (VITE specific)
+      - name: "Create Environment File"
+        run: |
+          touch .env
+          echo VITE_FETCH_API_KEY=${{ secrets.FETCH_API_KEY }} >> .env
+          cat .env
       # Push the docker image to DockerHub
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
-          build-args: |
-            "FETCH_API_KEY={{ secrets.FETCH_API_KEY }}"
-          file: ./Dockerfile.actions
+          file: ./Dockerfile.stage
           platforms: linux/arm64,linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
