@@ -41,9 +41,9 @@ jobs:
       # Create the environment file (VITE specific)
       - name: "Create Environment File"
         run: |
-          touch /app/.env
-          echo VITE_FETCH_API_KEY=${{ secrets.FETCH_API_KEY }} >> /app/.env
-          cat /app/.env
+          touch ./app/.env
+          echo VITE_FETCH_API_KEY=${{ secrets.FETCH_API_KEY }} >> ./app/.env
+          cat ./app/.env
       # Push the docker image to DockerHub
       - name: Build and push
         uses: docker/build-push-action@v3
