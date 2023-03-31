@@ -13,10 +13,6 @@ function addZipCode() {
   emit("addZipCode", zipCode.value);
   zipCode.value = null;
 }
-
-function test() {
-  console.log("TEST");
-}
 </script>
 
 <template>

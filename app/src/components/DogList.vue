@@ -73,9 +73,7 @@ watch(selectedDogIds.value, () => {
 </script>
 
 <template>
-  <div
-    class="h-full grid grid-cols-1 gap-4 lg:col-span-2 order-last lg:order-first"
-  >
+  <div class="h-full w-full lg:grid grid-cols-1 gap-4 lg:col-span-2">
     <div
       class="flex flex-col h-full overflow-hidden rounded-lg bg-white shadow"
     >

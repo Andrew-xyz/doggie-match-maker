@@ -23,7 +23,9 @@ async function logout() {
         <span class="sr-only">Doggie Match Maker</span>
         <img class="h-12 w-auto" src="@/assets/logo.svg" />
       </a>
-      <div class="text-yellow-500 text-2xl">Doggie Match Maker</div>
+      <div class="text-yellow-500 text-lg sm:text-2xl truncate">
+        Doggie Match Maker
+      </div>
     </div>
     <div class="flex flex-row w-fit h-fit space-x-4">
       <BaseButtonIcon

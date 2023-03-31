@@ -47,7 +47,7 @@ watch(zipCodeFilters.value, () => {
 </script>
 
 <template>
-  <div class="h-full grid grid-cols-1 gap-4 order-first lg:order-last">
+  <div class="h-full w-full lg:grid grid-cols-1 gap-4">
     <div
       class="flex flex-col h-full overflow-hidden rounded-lg bg-white shadow"
     >

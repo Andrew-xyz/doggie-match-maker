@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import LoginFormDefault from "@/components/LoginFormDefault.vue";
 import LoginFormFailure from "@/components/LoginFormFailure.vue";
-import TransitionOutIn from "@/transitions/TransitionOutIn.vue";
+import TransitionFadeOutIn from "@/transitions/TransitionFadeOutIn.vue";
 
 // Successful login
 const router = useRouter();
@@ -35,14 +35,14 @@ function handleFailure() {
           <h1 class="mb-2 text-2xl">Doggie Match Maker</h1>
           <span class="text-gray-300">Enter Contact Info</span>
         </div>
-        <TransitionOutIn>
+        <TransitionFadeOutIn>
           <LoginFormDefault
             v-if="!loginFailure"
             @login-success="handleSuccess"
             @login-failure="handleFailure"
           />
           <LoginFormFailure v-else @login-reset="loginFailure = false" />
-        </TransitionOutIn>
+        </TransitionFadeOutIn>
       </div>
     </div>
   </div>

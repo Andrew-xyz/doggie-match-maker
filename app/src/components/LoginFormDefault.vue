@@ -10,10 +10,10 @@ const email = ref("");
 const data = ref(null);
 
 async function login() {
-  const response = await fetchClient.post(
-    "/auth/login",
-    JSON.stringify({ name: name.value, email: email.value })
-  );
+  const response = await fetchClient.post("/auth/login", {
+    name: name.value,
+    email: email.value,
+  });
   data.value = response;
   if (data.value.status === 200) emit("loginSuccess");
   else emit("loginFailure");
