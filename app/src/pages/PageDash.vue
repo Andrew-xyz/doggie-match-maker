@@ -54,7 +54,7 @@ const onMobile = computed(() => {
       </div>
     </header>
     <!-- Main Panels -->
-    <main class="-mt-24 pb-2 lg:pb-8 pt-2 grow overflow-y-auto">
+    <main class="-mt-24 pb-2 pt-2 grow overflow-y-auto">
       <div class="mx-auto max-w-3xl h-full px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div
           class="h-full flex flex-col lg:grid items-start gap-4 lg:grid-cols-3 lg:gap-8"
