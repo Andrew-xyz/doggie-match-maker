@@ -1,4 +1,5 @@
 <script setup>
+import BaseButtonText from "./BaseButtonText.vue";
 defineEmits(["loginReset"]);
 </script>
 
@@ -10,8 +11,8 @@ defineEmits(["loginReset"]);
 
     <div class="mt-8 flex justify-center">
       <BaseButtonText
-        class="w-32 h-10 rounded-xl bg-yellow-400 bg-opacity-50 text-white shadow-xl backdrop-blur-md hover:bg-yellow-600"
-        text="Login"
+        class="w-32 h-10 rounded-xl bg-yellow-400 bg-opacity-50 !text-white shadow-xl backdrop-blur-md hover:bg-yellow-600"
+        text="Try Again"
         @click="$emit('loginReset')"
       />
     </div>
